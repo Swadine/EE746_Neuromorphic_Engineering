@@ -1,0 +1,20 @@
+N=3;
+M=5000;
+Iapp = [250; 250; 250]*1e-12;
+Neuron_Str=["RS","IB","CH"];
+[V,U]=AEF(N,M,Neuron_Str,Iapp);
+t=1:1:M;
+tiledlayout(3,2)
+nexttile
+figure(1)
+plot(t,V(1,:))
+nexttile
+plot(t,U(1,:))
+nexttile
+plot(t,V(2,:))
+nexttile
+plot(t,U(2,:))
+nexttile
+plot(t,V(3,:))
+nexttile
+plot(t,U(3,:))
