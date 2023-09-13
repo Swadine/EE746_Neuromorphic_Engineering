@@ -89,6 +89,12 @@ for i=1:Ns
     weights2(i)=weights2(i) - del_wk(i);
 end
 
+for i=1:length(weights2)
+    if weights2(i)<10
+        weights2(i)=10;
+    end
+end
+
 Iapp2=zeros(Ns,num_steps);
 count=1;
 for w=weights2
@@ -116,6 +122,11 @@ Neuron = "RS";
 [V_, U_,Num_spikes2,spt] = AEF(1, num_steps, Neuron, Inew2);
 
 iterations=iterations+1;
+
+if Num_spikes2==0
+    break;
+end
+
 end
 
 end
@@ -130,6 +141,7 @@ disp(Num_spikes2);
 fprintf('number of iterations=');
 disp(iterations);
 
+min(weights2)
 t=1:1:num_steps;
 
 figure
@@ -161,4 +173,4 @@ nexttile
 plot(weights)
 hold on
 plot(weights2)
-legend('old weights','new weights','Location','southeast')
+legend('old weights','new weights','Location','northeast')
